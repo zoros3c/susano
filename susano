@@ -1,0 +1,163 @@
+#!/bin/bash
+
+pip install fade > /dev/null
+
+# Python code embedded in Bash script
+python3 <<END
+# Python code goes here
+import fade
+
+text = """
+			    ███████╗██╗   ██╗███████╗ █████╗ ███╗   ██╗ ██████╗ 
+		  	    ██╔════╝██║   ██║██╔════╝██╔══██╗████╗  ██║██╔═══██╗
+			    ███████╗██║   ██║███████╗███████║██╔██╗ ██║██║   ██║
+			    ╚════██║██║   ██║╚════██║██╔══██║██║╚██╗██║██║   ██║
+			    ███████║╚██████╔╝███████║██║  ██║██║ ╚████║╚██████╔╝
+			    ╚══════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ 
+"""
+
+# Fading an ASCII art text (purple-pink)
+faded_text = fade.purplepink(text)
+print(faded_text)
+
+text2 = "			       		 Made by Abhijeet & Sunil"
+
+# fading an ASCII art text  (green-blue)
+faded_text2 = fade.greenblue(text2)
+print(faded_text2)
+END
+
+# Create global variables
+Target=""
+DP=""
+progress_bar_width=50
+
+# Function to display progress bar
+function show_progress() {
+    local progress=$1
+    # Cap progress at 100%
+    if ((progress > 100)); then
+        progress=100
+    fi
+    local done=$((progress * progress_bar_width / 100))
+    local left=$((progress_bar_width - done))
+    printf "\r["
+    printf "%${done}s" "" | tr ' ' '#'
+    printf "%${left}s" ""
+    printf "] %d%%" "$progress"
+}
+
+# Prompt user for target
+read -p $'\e[38;5;208mSpecify your Target (ex - target.com):\e[0m ' Target
+
+# Prompt user for destination directory
+read -p $'\e[38;5;208mSpecify the Destination Directory:\e[0m ' DP
+
+# Perform whois lookup and save output to file
+echo $'\e[38;5;208mPerforming whois lookup\e[0m'
+whois "$Target" > "$DP/whois.txt"
+echo $'\e[38;5;76mWhois lookup completed. Output saved to\e[0m' "$DP/whois.txt"
+
+# Increment progress for each completed task
+progress=20
+show_progress $progress
+
+# Perform nslookup and save output to file
+echo $'\e[38;5;208mPerforming nslookup\e[0m'
+nslookup "$Target" > "$DP/nslookup.txt"
+echo $'\e[38;5;76mNslookup completed. Output saved to\e[0m' "$DP/nslookup.txt"
+
+# Increment progress for each completed task
+progress=$((progress + 20))
+show_progress $progress
+
+# Add prefix to target for gospider
+echo $'\e[38;5;208mCrawling Target\e[0m'
+Gospider_Target="https://$Target"
+# Perform gospider crawl and save output to file
+gospider -s "$Gospider_Target" > "$DP/gospider.txt"
+echo $'\e[38;5;76mGospider crawl completed. Output saved to\e[0m' "$DP/gospider.txt"
+
+# Increment progress for each completed task
+progress=$((progress + 10))
+show_progress $progress
+
+# Perform subdomain enumeration and save output to file
+echo $'\e[38;5;208mPerforming SubDomain Enumeration\e[0m'
+subfinder -d "$Target" > "$DP/subdomains.txt"
+echo $'\e[38;5;76mSubdomain enumeration completed. Output saved to\e[0m' "$DP/subdomains.txt"
+
+# Increment progress for each completed task
+progress=$((progress + 10))
+show_progress $progress
+
+# Perform crt.sh lookup and save output to file
+echo $'\e[38;5;208mPerforming crt.sh\e[0m'
+curl -s "https://crt.sh/?q=$Target&output=json" | jq -r '.[].name_value' | grep -Po '(\w+\.\w+\.\w+)$' | anew "$DP/subdomains.txt"
+echo $'\e[38;5;76mcrt.sh lookup completed. Output saved to\e[0m' "$DP/subdomains.txt"
+
+# Increment progress for each completed task
+progress=$((progress + 10))
+show_progress $progress
+
+#  Performing port scanning using naabu tool
+echo $'\e[38;5;208mPerforming Port Scanning\e[0m'
+naabu -list "$DP/subdomains.txt" -c 50 -nmap-cli 'nmap -sV -sC' -o "$DP/ports.txt"
+echo $'\e[38;5;76mPort scanning completed. Output saved to\e[0m' "$DP/ports.txt"
+
+# Increment progress for each completed task
+progress=$((progress + 10))
+show_progress $progress
+
+# Perform live subdomain check and save output to file
+echo $'\e[38;5;208mResolving Live subdomains\e[0m'
+cat "$DP/subdomains.txt" | httpx-toolkit -l "$DP/subdomains.txt" -ports 443,80,8080,8000,8888 -threads 200 > "$DP/live_subdomains.txt"
+echo $'\e[38;5;76mLive subdomain check completed. Output saved to\e[0m' "$DP/live_subdomains.txt"
+
+# Increment progress for each completed task
+progress=$((progress + 5))
+show_progress $progress
+
+# Run eyewitness tool and save output screenshots to eyewitness/screens directory
+echo $'\e[38;5;208mScreenshoting the live subdomains\e[0m'
+mkdir "$DP/eyewitness"
+eyewitness -f "$DP/live_subdomains.txt" -d "$DP/eyewitness/screens"
+echo $'\e[38;5;76mEyewitness scan completed. Screenshots saved to\e[0m' "$DP/eyewitness/"
+
+# Increment progress for each completed task
+progress=$((progress + 5))
+show_progress $progress
+
+# Finding Parameters
+echo $'\e[38;5;208mParameter Enumeration\e[0m' 
+cat "$DP/live_subdomains.txt" | gau > "$DP/params.txt"
+echo $'\e[38;5;76mParameter enumeration completed. Output saved to\e[0m' "$DP/params.txt"
+
+# Increment progress for each completed task
+progress=$((progress + 5))
+show_progress $progress
+
+# Filter parameters 
+echo $'\e[38;5;208mFiltering Parameters\e[0m'
+cat "$DP/params.txt" | uro -o "$DP/filter_param.txt"
+echo $'\e[38;5;76mParameter filteration completed. Output Saved to\e[0m' "$DP/filter_param.txt"
+
+# Increment progress for each completed task
+progress=$((progress + 5))
+show_progress $progress
+
+# Finding JS Files
+echo $'\e[38;5;208mFinding JS Files\e[0m'
+cat "$DP/filter_param.txt" | grep ".js$" > "$DP/jsfiles.txt"
+cat "$DP/jsfiles.txt" | uro | anew "$DP/jsfiles.txt"
+echo $'\e[38;5;76mFound JSfiles and Saved to\e[0m' "$DP/jsfiles.txt"
+
+# Increment progress for each completed task
+progress=$((progress + 5))
+show_progress $progress
+
+# Ensure progress reaches 100%
+show_progress 100
+
+# Add newline after progress bar
+echo
