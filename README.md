@@ -50,13 +50,12 @@ $ sudo bash install.sh
 ```
 
 - On first launch, It'll install the dependencies and that's it. **Susano** is installed.
+- 
 Running the tool 
 
 ```bash
 $ susano
 ```
-
-!https://github.com/htr-tech/zphisher/raw/master/.github/misc/workflow.gif
 
 - Simply Run the **susano** command in the terminal in your desired directory.
 
