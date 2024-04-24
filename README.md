@@ -45,7 +45,7 @@ git clone https://github.com/zoros3c/susano.git
 Now go to cloned directory and run `install.sh` with sudo permission
 
 ```bash
-$ cd susanoo
+$ cd susano
 $ sudo bash install.sh
 ```
 
