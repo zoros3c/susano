@@ -66,6 +66,6 @@ $ sudo bash install.sh
 
 [Usage Guide](https://github.com/zoros3c/susano/assets/167875160/dc1f5730-d3a9-422e-af51-c936bae3dfb9)
 
-## *   **:: Screenshort ::***
+## ***:: Screenshort ::***
 
 ![Result Folder's Content](https://github.com/zoros3c/susano/assets/167875160/64192305-d17e-40dc-a2fa-90ff4cde2e67)
