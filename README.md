@@ -3,8 +3,6 @@
 - [Project Discovery Team](https://github.com/projectdiscovery)
 - [Red Siege](https://github.com/RedSiege)
 
----
-
 ## **Disclaimer**
 
 *Any actions and or activities related to Susano is solely your responsibility. The misuse of this toolkit can result in **criminal charges** brought against the persons in question. **The contributors will not be held responsible** in the event any criminal charges be brought against any individuals misusing this toolkit to break the law.*
@@ -13,8 +11,6 @@
 **This Tool is made for educational purposes only**. Do not attempt to violate the law with anything contained here. **If this is your intention, then Get the hell out of here**!*
 
 *It only demonstrates "How Recon Works!". **You shall not misuse the information to gain unauthorized access to someones PII**. However you may try out this at your own risk.*    
-
----
 
 ## **Features**
 
@@ -36,8 +32,6 @@
 - Parameter Filteration
 - JS Files Extraction
 
----
-
 ## **Installation**
 
 Just, Clone this repository 
@@ -55,8 +49,6 @@ $ sudo bash install.sh
 
 - On first launch, It'll install the dependencies and that's it. **Susano** is installed.
 
----
-
 !https://github.com/htr-tech/zphisher/raw/master/.github/misc/workflow.gif
 
 ## **Find Me on:**
@@ -67,7 +59,5 @@ $ sudo bash install.sh
 
 - For any queries, doubt, suggestion or for reporting any error, kindly connect with us via above social handles. We’ll be glad to have your suggestion regarding this tool.
 - Thnaks for using our tool😊
-
----
 
 ##
