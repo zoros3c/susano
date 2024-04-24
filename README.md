@@ -1,4 +1,4 @@
-![Screenshot from 2024-04-24 13-15-11.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3402b853-6c0b-4f3d-8bde-02910c8a320c/5e4a2d77-0434-49eb-873d-dc064ba36f6d/Screenshot_from_2024-04-24_13-15-11.png)
+![SUSANO](https://github.com/zoros3c/susano/assets/167875160/4adac290-2937-4b46-8c9d-7ec3079a128b)
 
 ## Special Thanks
 
@@ -64,8 +64,8 @@ $ sudo bash install.sh
 
 # ***:: Workflow ::***
 
-[Screencast from 2024-04-24 13-23-04.webm](https://prod-files-secure.s3.us-west-2.amazonaws.com/3402b853-6c0b-4f3d-8bde-02910c8a320c/b6b13a00-94cc-4d80-a470-7bfb2996fc60/Screencast_from_2024-04-24_13-23-04.webm)
+[Usage Guide](https://github.com/zoros3c/susano/assets/167875160/dc1f5730-d3a9-422e-af51-c936bae3dfb9)
 
 ## *   **:: Screenshort ::***
 
-![Screenshot from 2024-04-24 13-26-20.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3402b853-6c0b-4f3d-8bde-02910c8a320c/8afe8259-9ebe-45e3-a443-633508bc6994/Screenshot_from_2024-04-24_13-26-20.png)
+![Result Folder's Content](https://github.com/zoros3c/susano/assets/167875160/64192305-d17e-40dc-a2fa-90ff4cde2e67)
