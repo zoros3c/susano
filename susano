@@ -53,7 +53,16 @@ read -p $'\e[38;5;208mSpecify your Target (ex - target.com):\e[0m ' Target
 # Prompt user for destination directory
 read -p $'\e[38;5;208mSpecify the Destination Directory:\e[0m ' DP
 
-mkdir $DP
+# Check if the directory already exists
+if [ ! -d "$DP" ]; then
+    # If not, create it
+    mkdir "$DP"
+    echo $'\e[38;5;76mDestination directory created\e[0m'
+else
+    # If it exists, inform the user and move on
+    echo $'\e[38;5;76mDestination directory already exists, moving on to the next step\e[0m'
+fi
+
 
 # Perform whois lookup and save output to file
 echo $'\e[38;5;208mPerforming whois lookup\e[0m'
