@@ -51,8 +51,6 @@ $ sudo bash install.sh
 
 - On first launch, It'll install the dependencies and that's it. **Susano** is installed.
 
-!https://github.com/htr-tech/zphisher/raw/master/.github/misc/workflow.gif
-
 ## **Find Me on:**
 
 **Sunil’s** [Linkedin](https://www.linkedin.com/in/sunill-kumawat/)  | [Twitter](https://twitter.com/sunill_kumawat) 
