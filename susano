@@ -53,6 +53,8 @@ read -p $'\e[38;5;208mSpecify your Target (ex - target.com):\e[0m ' Target
 # Prompt user for destination directory
 read -p $'\e[38;5;208mSpecify the Destination Directory:\e[0m ' DP
 
+mkdir $DP
+
 # Perform whois lookup and save output to file
 echo $'\e[38;5;208mPerforming whois lookup\e[0m'
 whois "$Target" > "$DP/whois.txt"
