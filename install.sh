@@ -28,6 +28,6 @@ apt install subfinder
 apt install eyewitness 
 
 # Adding executable permissions
-#chmod +x susano
-#mv susano /bin
+chmod +x susano
+mv susano /bin
 
