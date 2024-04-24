@@ -50,7 +50,7 @@ $ sudo bash install.sh
 ```
 
 - On first launch, It'll install the dependencies and that's it. **Susano** is installed.
-- 
+  
 Running the tool 
 
 ```bash
