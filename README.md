@@ -66,7 +66,7 @@ $ susano
 **Abhijeet’s** [Linkedin](https://www.linkedin.com/in/abhijeet-kumawat/)  | [Twitter](https://twitter.com/AbhijeetKumaw10) 
 
 - For any queries, doubt, suggestion or for reporting any error, kindly connect with us via above social handles. We’ll be glad to have your suggestion regarding this tool.
-- Thnaks for using our tool😊
+- Thanks for using our tool😊
 
 # ***:: Workflow ::***
 
