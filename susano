@@ -20,7 +20,7 @@ text = """
 faded_text = fade.purplepink(text)
 print(faded_text)
 
-text2 = "			       		 Made by Abhijeet & Sunil"
+text2 = "			       Made by Abhijeet | Sunil | Mayank | Pooja"
 
 # fading an ASCII art text  (green-blue)
 faded_text2 = fade.greenblue(text2)
