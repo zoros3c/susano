@@ -66,6 +66,10 @@ $ susano
 
 **Abhijeet’s** [Linkedin](https://www.linkedin.com/in/abhijeet-kumawat/)  | [Twitter](https://twitter.com/AbhijeetKumaw10) 
 
+**Puja’s** [Linkedin](https://www.linkedin.com/in/puja-basu-43993891/)  
+
+**Mayank’s** [Linkedin](https://www.linkedin.com/in/mayank-jaitley-839283122/)  | [Twitter](https://twitter.com/mayankjaitley) 
+
 - For any queries, doubt, suggestion or for reporting any error, kindly connect with us via above social handles. We’ll be glad to have your suggestion regarding this tool.
 - Thanks for using our tool😊
 
