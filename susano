@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pip install fade > /dev/null
+
 
 # Python code embedded in Bash script
 python3 <<END
