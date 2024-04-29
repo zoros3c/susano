@@ -54,13 +54,34 @@ read -p $'\e[38;5;208mSpecify your Target (ex - target.com):\e[0m ' Target
 read -p $'\e[38;5;208mSpecify the Destination Directory:\e[0m ' DP
 
 # Check if the directory already exists
-if [ ! -d "$DP" ]; then
-    # If not, create it
+if [ -d "$DP" ]; then
+    # If it exists, inform the user and prompt for their choice
+    echo $'\e[38;5;196mThe directory already exists.\e[0m'
+    read -p $'\e[38;5;196mDo you want to store the output result in the existing directory? (y/n):\e[0m ' choice
+    if [ "$choice" == "y" ]; then
+        echo $'\e[38;5;76mContinuing with existing directory\e[0m'
+    elif [ "$choice" == "n" ]; then
+        echo $'\e[38;5;196mKindly create a new directory\e[0m'
+        # Redirect the user to specify the destination directory
+        read -p $'\e[38;5;208mSpecify the Destination Directory:\e[0m ' DP
+        # Check if the directory already exists again after user input
+        if [ ! -d "$DP" ]; then
+            # If not, create it
+            mkdir "$DP"
+            echo $'\e[38;5;76mDestination directory created\e[0m'
+        else
+            # If it exists even after user input, exit the script
+            echo $'\e[38;5;196mDirectory already exists. Exiting script.\e[0m'
+            exit 1
+        fi
+    else
+        echo $'\e[38;5;196mInvalid choice. Exiting script.\e[0m'
+        exit 1
+    fi
+else
+    # If it doesn't exist, create it
     mkdir "$DP"
     echo $'\e[38;5;76mDestination directory created\e[0m'
-else
-    # If it exists, inform the user and move on
-    echo $'\e[38;5;76mDestination directory already exists, moving on to the next step\e[0m'
 fi
 
 
