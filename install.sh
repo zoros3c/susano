@@ -4,6 +4,7 @@
 echo "Installing WHOIS tool or Updating if already exists"
 apt install whois
 
+
 pip install fade
 
 # Httpx-toolkit Installation 
