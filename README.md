@@ -1,4 +1,5 @@
-![SUSANO](https://github.com/zoros3c/susano/assets/167875160/4adac290-2937-4b46-8c9d-7ec3079a128b)
+![SUSANO_new](https://github.com/zoros3c/susano/assets/167875160/c18b875b-2e1e-4c99-aa65-b3ff73dc0f5c)
+
 
 ## Special Thanks
 
