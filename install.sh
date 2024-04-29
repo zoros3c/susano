@@ -4,6 +4,8 @@
 echo "Installing WHOIS tool or Updating if already exists"
 apt install whois
 
+pip install fade
+
 # naabu installation
 echo "Installing naabu or Updating if already exists"
 apt install naabu
