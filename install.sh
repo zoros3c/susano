@@ -6,6 +6,10 @@ apt install whois
 
 pip install fade
 
+# Httpx-toolkit Installation 
+echo "Installing Httpsx-toolkit or Updating if already exists"
+apt install httpx-toolkit
+
 # naabu installation
 echo "Installing naabu or Updating if already exists"
 apt install naabu
