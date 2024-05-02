@@ -5,6 +5,7 @@
 
 - [Project Discovery Team](https://github.com/projectdiscovery)
 - [Red Siege](https://github.com/RedSiege)
+- [m4llOK](https://github.com/m4llOK)
 
 ## ***:: Disclaimer ::***
 
