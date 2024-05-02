@@ -1,5 +1,21 @@
 #!/bin/bash
 
+# Define a counter variable to track Ctrl+C presses
+ctrl_c_count=0
+
+# Function to handle Ctrl+C
+ctrl_c() {
+    ((ctrl_c_count++))
+    if ((ctrl_c_count == 4)); then
+        echo $'\e[38;5;196mCtrl+C pressed three times. Aborting script.\e[0m'
+        exit 1
+    else
+        echo $'\e[38;5;196mCtrl+C pressed. Skipping current step.\e[0m'
+    fi
+}
+
+# Trap Ctrl+C
+trap ctrl_c SIGINT
 
 
 # Python code embedded in Bash script
@@ -85,6 +101,9 @@ else
 fi
 
 
+echo $'\e[38;5;208mHit \e[38;5;196mctrl+c\e[0m \e[38;5;208mto skip any process\e[0m \e[0m'
+echo $'\e[38;5;208mHit \e[38;5;196mctrl+c\e[0m \e[38;5;208m4 times to\e[0m \e[38;5;196mABORT\e[0m \e[38;5;208mthe\e[0m \e[38;5;76msusano\e[0m \e[0m'
+
 # Perform whois lookup and save output to file
 echo $'\e[38;5;208mPerforming whois lookup\e[0m'
 whois "$Target" > "$DP/whois.txt"
@@ -104,11 +123,11 @@ progress=$((progress + 20))
 show_progress $progress
 
 # Add prefix to target for gospider
-echo $'\e[38;5;208mCrawling Target\e[0m'
-Gospider_Target="https://$Target"
+#echo $'\e[38;5;208mCrawling Target\e[0m'
+#Gospider_Target="https://$Target"
 # Perform gospider crawl and save output to file
-gospider -s "$Gospider_Target" > "$DP/gospider.txt"
-echo $'\e[38;5;76mGospider crawl completed. Output saved to\e[0m' "$DP/gospider.txt"
+#gospider -s "$Gospider_Target" > "$DP/gospider.txt"
+#echo $'\e[38;5;76mGospider crawl completed. Output saved to\e[0m' "$DP/gospider.txt"
 
 # Increment progress for each completed task
 progress=$((progress + 10))
@@ -133,9 +152,9 @@ progress=$((progress + 10))
 show_progress $progress
 
 #  Performing port scanning using naabu tool
-echo $'\e[38;5;208mPerforming Port Scanning\e[0m'
-naabu -list "$DP/subdomains.txt" -c 50 -nmap-cli 'nmap -sV -sC' -o "$DP/ports.txt"
-echo $'\e[38;5;76mPort scanning completed. Output saved to\e[0m' "$DP/ports.txt"
+#echo $'\e[38;5;208mPerforming Port Scanning\e[0m'
+#naabu -list "$DP/subdomains.txt" -c 50 -nmap-cli 'nmap -sV -sC' -o "$DP/ports.txt"
+#echo $'\e[38;5;76mPort scanning completed. Output saved to\e[0m' "$DP/ports.txt"
 
 # Increment progress for each completed task
 progress=$((progress + 10))
@@ -151,10 +170,10 @@ progress=$((progress + 5))
 show_progress $progress
 
 # Run eyewitness tool and save output screenshots to eyewitness/screens directory
-echo $'\e[38;5;208mScreenshoting the live subdomains\e[0m'
-mkdir "$DP/eyewitness"
-eyewitness -f "$DP/live_subdomains.txt" -d "$DP/eyewitness/screens"
-echo $'\e[38;5;76mEyewitness scan completed. Screenshots saved to\e[0m' "$DP/eyewitness/"
+#echo $'\e[38;5;208mScreenshoting the live subdomains\e[0m'
+#mkdir "$DP/eyewitness"
+#eyewitness -f "$DP/live_subdomains.txt" -d "$DP/eyewitness/screens"
+#echo $'\e[38;5;76mEyewitness scan completed. Screenshots saved to\e[0m' "$DP/eyewitness/"
 
 # Increment progress for each completed task
 progress=$((progress + 5))
@@ -162,6 +181,7 @@ show_progress $progress
 
 # Finding Parameters
 echo $'\e[38;5;208mParameter Enumeration\e[0m' 
+echo $'\e[38;5;196mKindly Ignore the WARN[0000]\e[0m'
 cat "$DP/live_subdomains.txt" | gau > "$DP/params.txt"
 echo $'\e[38;5;76mParameter enumeration completed. Output saved to\e[0m' "$DP/params.txt"
 
@@ -184,6 +204,33 @@ cat "$DP/filter_param.txt" | grep ".js$" > "$DP/jsfiles.txt"
 cat "$DP/jsfiles.txt" | uro | anew "$DP/jsfiles.txt"
 echo $'\e[38;5;76mFound JSfiles and Saved to\e[0m' "$DP/jsfiles.txt"
 
+cd $DP
+
+# SecretFinder.py script installation
+wget -q "https://raw.githubusercontent.com/m4ll0k/SecretFinder/master/SecretFinder.py"
+
+# requirements.txt installation
+wget -q "https://raw.githubusercontent.com/m4ll0k/SecretFinder/master/requirements.txt"
+
+# installing requirements.txt
+python -m pip install -q -r requirements.txt
+
+# Executing SecretFinder.py
+echo ""
+echo ""
+echo $'\e[38;5;76mFinding Secrets\e[0m'
+echo $'\e[38;5;196mWarning: This process needs time, grab a coffee & feel free to do some other work\e[0m'
+echo $'\e[38;5;196mHit \"ctrl+c\" to stop this process if it is taking too long to find\e[0m' 
+cat jsfiles.txt | while read url; do python3 SecretFinder.py -i $url -o cli >> secret.txt; done
+echo $'\e[38;5;76mSecret searching finished\e[0m'
+echo $'\e[38;5;76mResult saved to\e[0m' "$DP/secret.txt"
+
+# Deleting SecretFinder and requirements.txt
+rm -rf SecretFinder.py 
+rm -rf requirements.txt
+
+cd ..
+
 # Increment progress for each completed task
 progress=$((progress + 5))
 show_progress $progress
@@ -192,4 +239,6 @@ show_progress $progress
 show_progress 100
 
 # Add newline after progress bar
-echo
+echo ""
+echo $'\e[38;5;76msusano is tired, time to sleep!\e[0m'
+echo $'\e[38;5;76mRecall again whenever you need me\e[0m'
