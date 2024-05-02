@@ -7,7 +7,7 @@ ctrl_c_count=0
 ctrl_c() {
     ((ctrl_c_count++))
     if ((ctrl_c_count == 4)); then
-        echo $'\e[38;5;196mCtrl+C pressed three times. Aborting script.\e[0m'
+        echo $'\e[38;5;196mCtrl+C pressed 4 times. Aborting script.\e[0m'
         exit 1
     else
         echo $'\e[38;5;196mCtrl+C pressed. Skipping current step.\e[0m'
@@ -65,6 +65,9 @@ display_disclaimer() {
 
 # Prompt disclaimer condition
 display_disclaimer
+echo ""
+echo $'\e[38;5;208mHit \e[38;5;196mctrl+c\e[0m \e[38;5;208mto skip any process\e[0m \e[0m'
+echo $'\e[38;5;208mHit \e[38;5;196mctrl+c\e[0m \e[38;5;208m4 times to\e[0m \e[38;5;196mABORT\e[0m \e[38;5;208mthe\e[0m \e[38;5;76msusano\e[0m \e[0m'
 echo ""
 
 # Create global variables
@@ -124,9 +127,6 @@ else
     echo $'\e[38;5;76mDestination directory created\e[0m'
 fi
 
-
-echo $'\e[38;5;208mHit \e[38;5;196mctrl+c\e[0m \e[38;5;208mto skip any process\e[0m \e[0m'
-echo $'\e[38;5;208mHit \e[38;5;196mctrl+c\e[0m \e[38;5;208m4 times to\e[0m \e[38;5;196mABORT\e[0m \e[38;5;208mthe\e[0m \e[38;5;76msusano\e[0m \e[0m'
 
 # Perform whois lookup and save output to file
 echo $'\e[38;5;208mPerforming whois lookup\e[0m'
