@@ -123,11 +123,11 @@ progress=$((progress + 20))
 show_progress $progress
 
 # Add prefix to target for gospider
-#echo $'\e[38;5;208mCrawling Target\e[0m'
-#Gospider_Target="https://$Target"
+echo $'\e[38;5;208mCrawling Target\e[0m'
+Gospider_Target="https://$Target"
 # Perform gospider crawl and save output to file
-#gospider -s "$Gospider_Target" > "$DP/gospider.txt"
-#echo $'\e[38;5;76mGospider crawl completed. Output saved to\e[0m' "$DP/gospider.txt"
+gospider -s "$Gospider_Target" > "$DP/gospider.txt"
+echo $'\e[38;5;76mGospider crawl completed. Output saved to\e[0m' "$DP/gospider.txt"
 
 # Increment progress for each completed task
 progress=$((progress + 10))
@@ -152,9 +152,9 @@ progress=$((progress + 10))
 show_progress $progress
 
 #  Performing port scanning using naabu tool
-#echo $'\e[38;5;208mPerforming Port Scanning\e[0m'
-#naabu -list "$DP/subdomains.txt" -c 50 -nmap-cli 'nmap -sV -sC' -o "$DP/ports.txt"
-#echo $'\e[38;5;76mPort scanning completed. Output saved to\e[0m' "$DP/ports.txt"
+echo $'\e[38;5;208mPerforming Port Scanning\e[0m'
+naabu -list "$DP/subdomains.txt" -c 50 -nmap-cli 'nmap -sV -sC' -o "$DP/ports.txt"
+echo $'\e[38;5;76mPort scanning completed. Output saved to\e[0m' "$DP/ports.txt"
 
 # Increment progress for each completed task
 progress=$((progress + 10))
@@ -170,10 +170,10 @@ progress=$((progress + 5))
 show_progress $progress
 
 # Run eyewitness tool and save output screenshots to eyewitness/screens directory
-#echo $'\e[38;5;208mScreenshoting the live subdomains\e[0m'
-#mkdir "$DP/eyewitness"
-#eyewitness -f "$DP/live_subdomains.txt" -d "$DP/eyewitness/screens"
-#echo $'\e[38;5;76mEyewitness scan completed. Screenshots saved to\e[0m' "$DP/eyewitness/"
+echo $'\e[38;5;208mScreenshoting the live subdomains\e[0m'
+mkdir "$DP/eyewitness"
+eyewitness -f "$DP/live_subdomains.txt" -d "$DP/eyewitness/screens"
+echo $'\e[38;5;76mEyewitness scan completed. Screenshots saved to\e[0m' "$DP/eyewitness/"
 
 # Increment progress for each completed task
 progress=$((progress + 5))
