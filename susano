@@ -43,6 +43,30 @@ faded_text2 = fade.greenblue(text2)
 print(faded_text2)
 END
 
+echo ""
+python3 <<END
+import fade
+
+text3 = " Disclaimer: Only for ethical purpose. You are solely responsible for any unethical activity using this tool"
+faded_text3 = fade.pinkred(text3)
+print(faded_text3)
+END
+# Function to disclaimer policy
+display_disclaimer() {
+	echo $'\e[38;5;208mDo you accept the disclaimer? (y/n):\e[0m'
+	read -n 1 accept_disclaimer
+	accept_disclaimer="${accept_disclaimer,,}" # Convert into lowercase
+	if [[ $accept_disclaimer != "y" ]]; then
+		echo $'\e[38;5;196msusano is not for any unethical purpose\e[0m'
+		exit 1
+	fi 
+	echo $'\n\e[38;5;76mYou have accepted the disclaimer. Continuing with the script...\e[0m'
+}
+
+# Prompt disclaimer condition
+display_disclaimer
+echo ""
+
 # Create global variables
 Target=""
 DP=""
