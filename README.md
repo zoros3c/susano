@@ -80,4 +80,4 @@ $ susano
 
 ## ***:: Screenshort ::***
 
-![Result Folder's Content](https://github.com/zoros3c/susano/assets/167875160/64192305-d17e-40dc-a2fa-90ff4cde2e67)
+![Output Folder containg result files of susano](https://github.com/zoros3c/susano/assets/167875160/6bea0bd2-3bbd-4ce0-870f-c650a9dae24e)
