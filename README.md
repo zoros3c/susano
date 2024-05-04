@@ -35,6 +35,7 @@
 - Parameter Enumeration
 - Parameter Filteration
 - JS Files Extraction
+- Secret Keys/Passwords Extraction
 
 ## **Installation**
 
