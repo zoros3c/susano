@@ -214,8 +214,8 @@ show_progress $progress
 
 # 9. Finding Parameters
 echo $'\e[38;5;208mParameter Enumeration\e[0m' 
-echo $'\e[38;5;196mKindly Ignore the WARN[0000]\e[0m'
-cat "$DP/live_subdomains.txt" | gau > "$DP/params.txt"
+
+katana -list "$DP/live_subdomains.txt" -o "$DP/params.txt"
 echo $'\e[38;5;76mParameter enumeration completed. Output saved to\e[0m' "$DP/params.txt"
 echo ""
 
